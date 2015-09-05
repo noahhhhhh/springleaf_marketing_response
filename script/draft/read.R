@@ -3,8 +3,8 @@ require(bit64) # dealing with integer64 issue when fread
 ###############################################################################################
 ## 1. load the data ###########################################################################
 ###############################################################################################
-dtRawTrain <- fread("data/train.csv")
-dtRawTest <- fread("data/test.csv")
+dtRawTrain <- fread("data/train.csv", na.strings = c("NA", "", " ", "[]")) # from explore.R, "" abd "[]" are appearing as NAs
+dtRawTest <- fread("data/test.csv", na.strings = c("NA", "", " ", "[]")) # from explore.R, "" abd "[]" are appearing as NAs
 
 ###############################################################################################
 ## 2. take a look #############################################################################
