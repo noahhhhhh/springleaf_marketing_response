@@ -546,10 +546,6 @@ CheckColNAs(dtRawTrain[, names(charColClassInt), with = F]) # many rows are miss
 ## 2.3 chech which columns could #
 ## be convereted into factor #####
 ##################################
-## no need to consider those full
-## of NAs and too many NAs columns
-nameColNAs.6
-nameColNAs.0
 ## character columns
 intColLevelsChar.Train <- CheckColLevels(dtRawTrain, names(charColClassChar)) # train set
 # VAR_0001 VAR_0005 VAR_0008 VAR_0009 VAR_0010 VAR_0011 VAR_0012 VAR_0043 
@@ -581,17 +577,27 @@ intColLevelsChar.Test <- CheckColLevels(dtRawTest, names(charColClassChar)) # te
 # 8        9       50        4        4        4     1873        2 
 # VAR_0467 VAR_0493 VAR_1934 
 # 4      619        5 
-## integer column
+## integer columns
 intColLevelsInt.Train <- CheckColLevels(dtRawTrain, names(charColClassInt)) # way too many
 intColLevelsInt.Test <- CheckColLevels(dtRawTest, names(charColClassInt)[-length(charColClassInt)]) # way too many
-## numeric column
-CheckColLevels(dtRawTrain, names(charColClassNum))
-
-
-
-
-
-
+## numeric columns
+intColLevelsNum.Train <- CheckColLevels(dtRawTrain, names(charColClassNum)) # train set
+# VAR_0299 VAR_0300 VAR_0301 VAR_0319 VAR_0320 VAR_0321 VAR_0335 VAR_0336 
+# 579      620      619      582      619      615      588      606 
+# VAR_0337 VAR_0370 
+# 620      493 
+intColLevelsNum.Test <- CheckColLevels(dtRawTest, names(charColClassNum)) # test set
+# VAR_0299 VAR_0300 VAR_0301 VAR_0319 VAR_0320 VAR_0321 VAR_0335 VAR_0336 
+# 566      604      612      572      607      620      572      611 
+# VAR_0337 VAR_0370 
+# 601      493 
+## integer64 column
+intColLevelsInt64.Train <- CheckColLevels(dtRawTrain, names(charColClassInt64))
+# VAR_0212 
+# 128762
+intColLevelsInt64.Test <- CheckColLevels(dtRawTest, names(charColClassInt64))
+# VAR_0212 
+# 128918
 
 
 
