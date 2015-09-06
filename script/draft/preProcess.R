@@ -1,3 +1,7 @@
+require(data.table)
+require(bit64) # dealing with integer64 issue when fread
+require(caret)
+source("script/draft/utilities.R")
 ###############################################################################################
 ## 1. remove columns with too many NAs ########################################################
 ###############################################################################################
@@ -18,6 +22,9 @@ sum(intColLevelsChar.Train == 1)# 12
 sum(intColLevelsChar.Test == 1) # 12
 # are these columns the same in train and test?
 sum(names(intColLevelsChar.Train[intColLevelsChar.Train == 1]) == names(intColLevelsChar.Test[intColLevelsChar.Test == 1])) # yes, they are
+# remove
+dtProcTrain <- dtProcTrain[, names(intColLevelsChar.Train[intColLevelsChar.Train == 1]) := NULL, with = F]
+dtProcTest <- dtProcTest[, names(intColLevelsChar.Test[intColLevelsChar.Test == 1]) := NULL, with = F]
 
 ## integer columns
 sum(intColLevelsInt.Train == 1) # 38
@@ -43,9 +50,10 @@ names(intColLevelsInt.Train[intColLevelsInt.Test == 1])
 # check VAR_0526 and VAR_0529
 table(dtProcTrain$VAR_0526) # all values are 0 except one is 1, remove it
 table(dtProcTrain$VAR_0529) # all values are 0 except one is 1, remove it
+
 # remove them
-dtProcTrain <- dtProcTrain[, c("VAR_0526", "VAR_0529") := NULL, with = F]
-dtProcTest <- dtProcTest[, c("VAR_0526", "VAR_0529") := NULL, with = F]
+dtProcTrain <- dtProcTrain[, names(intColLevelsInt.Train[intColLevelsInt.Test == 1]) := NULL, with = F]
+dtProcTest <- dtProcTest[, names(intColLevelsInt.Train[intColLevelsInt.Test == 1]) := NULL, with = F]
 
 ## numeric columns
 sum(intColLevelsNum.Train == 1) # 0
@@ -54,3 +62,25 @@ sum(intColLevelsNum.Test == 1) # 0
 ## integer 64 column
 sum(intColLevelsInt64.Train == 1) # 0
 sum(intColLevelsInt64.Test == 1) # 0
+
+###############################################################################################
+## 3. remove columns with tiny variance #######################################################
+###############################################################################################
+nzv <- nearZeroVar(dtProcTrain, saveMetrics = T)
+
+## character columns
+rownames(x)[x$nzv][rownames(x)[x$nzv] %in% names(charColClassChar)]
+# [1] "VAR_0226" "VAR_0230" "VAR_0236" "VAR_0404" "VAR_0493"
+
+## integer columns
+rownames(x)[x$nzv][rownames(x)[x$nzv] %in% names(charColClassInt)]
+
+table(dtProcTrain$VAR_0018)
+
+intColLevelsInt.Train
+
+names(intColLevelsChar.Train[intColLevelsChar.Train == 1])
+
+
+
+
