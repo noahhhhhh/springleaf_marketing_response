@@ -546,7 +546,58 @@ CheckColNAs(dtRawTrain[, names(charColClassInt), with = F]) # many rows are miss
 ## 2.3 chech which columns could #
 ## be convereted into factor #####
 ##################################
-as.factor(dtRawTrain$VAR_0156)
+## no need to consider those full
+## of NAs and too many NAs columns
+nameColNAs.6
+nameColNAs.0
+## character columns
+CheckColLevels(dtRawTrain, names(charColClassChar)) # train set
+# VAR_0001 VAR_0005 VAR_0008 VAR_0009 VAR_0010 VAR_0011 VAR_0012 VAR_0043 
+# 3        4        1        1        1        1        1        1 
+# VAR_0044 VAR_0073 VAR_0075 VAR_0156 VAR_0157 VAR_0158 VAR_0159 VAR_0166 
+# 0     1458     2371      730      424      407      650     2145 
+# VAR_0167 VAR_0168 VAR_0169 VAR_0176 VAR_0177 VAR_0178 VAR_0179 VAR_0196 
+# 853     1645     1908     2163      945     1648     1875        1 
+# VAR_0200 VAR_0202 VAR_0204 VAR_0214 VAR_0216 VAR_0217 VAR_0222 VAR_0226 
+# 12386        1     1192       12        1      397        1        2 
+# VAR_0229 VAR_0230 VAR_0232 VAR_0236 VAR_0237 VAR_0239 VAR_0274 VAR_0283 
+# 1        2        2        2       45        1       57        7 
+# VAR_0305 VAR_0325 VAR_0342 VAR_0352 VAR_0353 VAR_0354 VAR_0404 VAR_0466 
+# 8        9       50        4        4        4     1823        2 
+# VAR_0467 VAR_0493 VAR_1934 
+# 4      608        5 
+CheckColLevels(dtRawTest, names(charColClassChar)) # test set
+# VAR_0001 VAR_0005 VAR_0008 VAR_0009 VAR_0010 VAR_0011 VAR_0012 VAR_0043 
+# 3        4        1        1        1        1        1        1 
+# VAR_0044 VAR_0073 VAR_0075 VAR_0156 VAR_0157 VAR_0158 VAR_0159 VAR_0166 
+# 0     1452     2369      701      387      390      635     2153 
+# VAR_0167 VAR_0168 VAR_0169 VAR_0176 VAR_0177 VAR_0178 VAR_0179 VAR_0196 
+# 857     1678     1935     2169      944     1676     1917        1 
+# VAR_0200 VAR_0202 VAR_0204 VAR_0214 VAR_0216 VAR_0217 VAR_0222 VAR_0226 
+# 12457        1     1190       16        1      397        1        2 
+# VAR_0229 VAR_0230 VAR_0232 VAR_0236 VAR_0237 VAR_0239 VAR_0274 VAR_0283 
+# 1        2        2        2       45        1       57        8 
+# VAR_0305 VAR_0325 VAR_0342 VAR_0352 VAR_0353 VAR_0354 VAR_0404 VAR_0466 
+# 8        9       50        4        4        4     1873        2 
+# VAR_0467 VAR_0493 VAR_1934 
+# 4      619        5 
+## integer column
+CheckColLevels(dtRawTrain, names(charColClassInt))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
