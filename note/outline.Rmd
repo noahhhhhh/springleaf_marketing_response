@@ -1,0 +1,10 @@
+---
+title: "outline"
+author: "Noah"
+date: "6 September 2015"
+output: 
+  html_document: 
+    theme: cosmo
+---
+
+VAR_0237 has different levels in train and set
