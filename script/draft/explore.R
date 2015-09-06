@@ -551,7 +551,7 @@ CheckColNAs(dtRawTrain[, names(charColClassInt), with = F]) # many rows are miss
 nameColNAs.6
 nameColNAs.0
 ## character columns
-CheckColLevels(dtRawTrain, names(charColClassChar)) # train set
+intColLevelsChar.Train <- CheckColLevels(dtRawTrain, names(charColClassChar)) # train set
 # VAR_0001 VAR_0005 VAR_0008 VAR_0009 VAR_0010 VAR_0011 VAR_0012 VAR_0043 
 # 3        4        1        1        1        1        1        1 
 # VAR_0044 VAR_0073 VAR_0075 VAR_0156 VAR_0157 VAR_0158 VAR_0159 VAR_0166 
@@ -566,7 +566,7 @@ CheckColLevels(dtRawTrain, names(charColClassChar)) # train set
 # 8        9       50        4        4        4     1823        2 
 # VAR_0467 VAR_0493 VAR_1934 
 # 4      608        5 
-CheckColLevels(dtRawTest, names(charColClassChar)) # test set
+intColLevelsChar.Test <- CheckColLevels(dtRawTest, names(charColClassChar)) # test set
 # VAR_0001 VAR_0005 VAR_0008 VAR_0009 VAR_0010 VAR_0011 VAR_0012 VAR_0043 
 # 3        4        1        1        1        1        1        1 
 # VAR_0044 VAR_0073 VAR_0075 VAR_0156 VAR_0157 VAR_0158 VAR_0159 VAR_0166 
@@ -582,8 +582,10 @@ CheckColLevels(dtRawTest, names(charColClassChar)) # test set
 # VAR_0467 VAR_0493 VAR_1934 
 # 4      619        5 
 ## integer column
-CheckColLevels(dtRawTrain, names(charColClassInt))
-
+intColLevelsInt.Train <- CheckColLevels(dtRawTrain, names(charColClassInt)) # way too many
+intColLevelsInt.Test <- CheckColLevels(dtRawTest, names(charColClassInt)[-length(charColClassInt)]) # way too many
+## numeric column
+CheckColLevels(dtRawTrain, names(charColClassNum))
 
 
 
