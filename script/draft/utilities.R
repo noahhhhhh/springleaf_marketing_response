@@ -25,5 +25,23 @@ CheckColLevels <- function(dt, colNames){
 }
 
 ###############################################################################################
-## 3. check the column levels #################################################################
+## 3. check the column levels is the same #####################################################
 ###############################################################################################
+CheckColLevelsSame <- function(dt, colNames){
+    sames <- as.logical()
+    same <- as.logical()
+    names <- as.character()
+    for (colName in colNames){
+        booleanIdnt <- names(table(dtProcTrain[, colName, with = F])) == names(table(dtProcTest[, colName, with = F]))
+        if (sum(booleanIdnt) == length(booleanIdnt)){
+            same <- T
+        } else {
+            same <- F
+        }
+        sames <- c(sames, same)
+        name <- colName
+        names <- c(names, name)
+    }
+    names(sames) <- names
+    return(sames)
+}

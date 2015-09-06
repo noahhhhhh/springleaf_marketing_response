@@ -7,4 +7,6 @@ output:
     theme: cosmo
 ---
 
-VAR_0237 has different levels in train and set
+VAR_0237 has different levels in train and set ing...
+converting date to int Done
+keep factorize characters ing...
